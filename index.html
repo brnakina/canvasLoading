@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <script src="./js/canvasLoadingDemo.js"></script>
+        <script src="./js/canvasLoadingSatellite.js"></script>
+        <script src="./js/canvasLoadingText.js"></script>
+        <script src="./js/canvasLoading.js"></script>
+        <script src="./js/index.js"></script>
+    </head>
+    <body>
+        <style>
+            div.row > div.holizon {
+                display : inline-block;
+            }
+            #canvas_loading {
+                border : 1px solid #ccc;
+            }
+        </style>
+        <div id="contents">
+            <div id="demo">
+                <div class="row">
+                    <div class="holizon">
+                        <p>回転体の数 : circleNumber</p>
+                        <input id="circle_number_bar" type="range" value="20" min="1" max="128" step="1" />
+                        <output id="circle_number_output">20</output>
+                    </div>
+                    <div class="holizon">
+                        <p>キャンバスの大きさ : canvasSize</p>
+                        <input id="size" type="range" value="256" min="32" max="1280" step="1" />
+                        <output id="size_output">256</output>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="holizon">
+                        <p>中央テキスト : text</p>
+                        <input id="text" type="text" value="Now Loading..." />
+                    </div>
+                    <div class="holizon">
+                        <p>フォントサイズ : fontsize</p>
+                        <input id="fontsize" type="range" value="20" min="6" max="100" step="1" />
+                        <output id="fontsize_output">11</output>
+                        <input id="bold" type="checkbox" />
+                        <label for="bold">太文字 : bold(true / false)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="holizon">
+                        <p>回転速度 : speed</p>
+                        <input id="speed" type="range" value="20" min="-255" max="255" step="1" />
+                        <output id="speed_output">20</output>
+                    </div>
+                    <div class="holizon">
+                        <p>回転体の周回直径 : orbitRadiusRate</p>
+                        <input id="orbit_radius_rate" type="range" value="80" min="1" max="150" step="1" />
+                        <output id="orbit_radius_rate_output">80</output>%
+                    </div>
+                    <div class="holizon">
+                        <p>回転体の直径 : radius</p>
+                        <input id="radius_bar" type="range" value="2.3" min="0.1" max="10" step="0.1" />
+                        <output id="radius_output">2.3</output>%
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="holizon">
+                        <p>回転体の色1 : color1</p>
+                        <input id="color_1_bar" type="color" value="#ffffff" />
+                        <output id="color_1_output">#ffffff</output>
+                    </div>
+                    <div class="holizon">
+                        <p>回転体の色2 : color2</p>
+                        <input id="color_2_bar" type="color" value="#000000" />
+                        <output id="color_2_output">#000000</output>
+                    </div>
+                    <div class="holizon">
+                        <p>回転体の枠の色 : strokeColor</p>
+                        <input id="stroke_color" type="color" value="#000000" />
+                        <output id="stroke_color_output">#000000</output>
+                        <input id="has_stroke" type="checkbox" checked="checked" />
+                        <label for="has_stroke">枠線を描画する : hasStroke(true / false)</label>
+                    </div>
+                </div>
+            </div>
+            <canvas id="canvas_loading"></canvas>
+        </div>
+    </body>
+</html>
