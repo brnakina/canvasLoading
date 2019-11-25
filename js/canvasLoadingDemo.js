@@ -86,6 +86,19 @@ canvasLoading.demo = (function(){
                 settings.bold = this.checked;
                 canvasLoading.newCanvas();
             }
+
+            speedBar.value = settings.speed;
+            sizeBar.value = settings.canvasSize;
+            orbitRadiusRateBar.value = settings.orbitRadiusRate;
+            circleNumberBar.value = settings.circleNumber;
+            radiusBar.value = settings.radius;
+            color1.value = settings.color1;
+            color2.value = settings.color2;
+            strokeColor.value = settings.strokeColor;
+            hasStroke.value = settings.hasStroke;
+            text.value = settings.text;
+            fontsize.value = settings.fontsize;
+            bold.checked = settings.bold;
         }
     }
 

@@ -31,8 +31,11 @@ canvasLoading.satellite = class Satellite {
 
     move() {
         this.radian += this.settings.speed * 0.1 / 255;
-        if(this.radian > Math.PI * 2 || this.radian < 0){
-            this.radian = 0;
+        if(this.radian > Math.PI * 2){
+            this.radian -= Math.PI * 2;
+        }
+        if(this.radian < this.radian < Math.PI * 2 * -1){
+            this.radian += Math.PI * 2;
         }
         this.x = Math.cos(this.radian) * this.orbitRadius + (this.settings.canvasSize / 2);
         this.y = Math.sin(this.radian) * this.orbitRadius + (this.settings.canvasSize / 2);
