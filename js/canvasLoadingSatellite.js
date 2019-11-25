@@ -34,7 +34,7 @@ canvasLoading.satellite = class Satellite {
         if(this.radian > Math.PI * 2){
             this.radian -= Math.PI * 2;
         }
-        if(this.radian < this.radian < Math.PI * 2 * -1){
+        if(this.radian < Math.PI * 2 * -1){
             this.radian += Math.PI * 2;
         }
         this.x = Math.cos(this.radian) * this.orbitRadius + (this.settings.canvasSize / 2);

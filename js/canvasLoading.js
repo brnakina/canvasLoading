@@ -18,6 +18,7 @@ var canvasLoading = Object.assign(canvasLoading,
             text : "Now Loading",
             fontsize : 20,
             bold : true,
+            textColor : "#000000"
         };
 
         const core = {

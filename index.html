@@ -8,6 +8,11 @@
     </head>
     <body>
         <style>
+            div.row {
+                margin-bottom : 20px;
+                padding-bottom : 10px;
+                border-bottom : 1px solid #ccc;
+            }
             div.row > div.holizon {
                 display : inline-block;
             }
@@ -40,6 +45,11 @@
                         <output id="fontsize_output">11</output>
                         <input id="bold" type="checkbox" />
                         <label for="bold">太文字 : bold(true / false)</label>
+                    </div>
+                    <div class="holizon">
+                        <p>テキストの色 : textColor</p>
+                        <input id="text_color" type="color" value="#000000" />
+                        <output id="text_color_output">#000000</output>
                     </div>
                 </div>
                 <div class="row">

@@ -2,6 +2,7 @@ var canvasLoading = canvasLoading || {};
 canvasLoading.demo = (function(){
     const core = {
         _init : (settings) => {
+
             const speedBar = document.getElementById('speed');
             speedBar.oninput = function(){
                 document.getElementById('speed_output').value = this.value;
@@ -87,6 +88,13 @@ canvasLoading.demo = (function(){
                 canvasLoading.newCanvas();
             }
 
+            const textColor = document.getElementById('text_color');
+            textColor.onchange = function(){
+                document.getElementById('text_color_output').value = this.value;
+                settings.textColor = this.value;
+                canvasLoading.newCanvas();
+            }
+
             speedBar.value = settings.speed;
             sizeBar.value = settings.canvasSize;
             orbitRadiusRateBar.value = settings.orbitRadiusRate;
@@ -99,6 +107,7 @@ canvasLoading.demo = (function(){
             text.value = settings.text;
             fontsize.value = settings.fontsize;
             bold.checked = settings.bold;
+            textColor.value = settings.textColor;
         }
     }
 
