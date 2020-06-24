@@ -1,12 +1,12 @@
 <html>
     <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
         <script src="./js/canvasLoadingDemo.js"></script>
         <script src="./js/canvasLoadingSatellite.js"></script>
         <script src="./js/canvasLoadingText.js"></script>
         <script src="./js/canvasLoading.js"></script>
         <script src="./js/index.js"></script>
-    </head>
-    <body>
         <style>
             div.row {
                 margin-bottom : 20px;
@@ -20,76 +20,87 @@
                 border : 1px solid #ccc;
             }
         </style>
+    </head>
+    <body>
         <div id="contents">
             <div id="demo">
                 <div class="row">
                     <div class="holizon">
                         <p>回転体の数 : circleNumber</p>
-                        <input id="circle_number_bar" type="range" value="20" min="1" max="128" step="1" />
-                        <output id="circle_number_output">20</output>
+                        <input type="range" min="1" max="128" step="1" v-model="settings.circleNumber" @change="onChange" />
+                        <output>{{settings.circleNumber}}</output>
                     </div>
                     <div class="holizon">
                         <p>キャンバスの大きさ : canvasSize</p>
-                        <input id="size" type="range" value="256" min="32" max="1280" step="1" />
-                        <output id="size_output">256</output>
+                        <input type="range" min="32" max="1280" step="1" v-model="settings.canvasSize" @change="onChange" />
+                        <output>{{settings.canvasSize}}</output>
                     </div>
                 </div>
                 <div class="row">
                     <div class="holizon">
                         <p>中央テキスト : text</p>
-                        <input id="text" type="text" value="Now Loading..." />
+                        <input id="text" type="text" v-model="settings.text" />
                     </div>
                     <div class="holizon">
                         <p>フォントサイズ : fontsize</p>
-                        <input id="fontsize" type="range" value="20" min="6" max="100" step="1" />
-                        <output id="fontsize_output">11</output>
-                        <input id="bold" type="checkbox" />
+                        <input id="fontsize" type="range" min="6" max="100" step="1" v-model="settings.fontsize" />
+                        <output id="fontsize_output">{{settings.fontsize}}</output>
+                        <input id="bold" type="checkbox" v-model="settings.bold" />
                         <label for="bold">太文字 : bold(true / false)</label>
                     </div>
                     <div class="holizon">
                         <p>テキストの色 : textColor</p>
-                        <input id="text_color" type="color" value="#000000" />
-                        <output id="text_color_output">#000000</output>
+                        <input id="text_color" type="color" v-model="settings.textColor" @change="onChange" />
+                        <output id="text_color_output">{{settings.textColor}}</output>
                     </div>
                 </div>
                 <div class="row">
                     <div class="holizon">
                         <p>回転速度 : speed</p>
-                        <input id="speed" type="range" value="20" min="-255" max="255" step="1" />
-                        <output id="speed_output">20</output>
+                        <input id="speed" type="range" min="-255" max="255" step="1" v-model="settings.speed"  @change="onChange" />
+                        <output id="speed_output">{{settings.speed}}</output>
                     </div>
                     <div class="holizon">
-                        <p>回転体の周回直径 : orbitRadiusRate</p>
-                        <input id="orbit_radius_rate" type="range" value="80" min="1" max="150" step="1" />
-                        <output id="orbit_radius_rate_output">80</output>%
+                        <p>回転体の周回半径 : orbitRadiusRate</p>
+                        <input id="orbit_radius_rate" type="range" min="1" max="200" step="1" v-model="settings.orbitRadiusRate"  @change="onChange" />
+                        <output id="orbit_radius_rate_output">{{settings.orbitRadiusRate}}</output>%
                     </div>
                     <div class="holizon">
-                        <p>回転体の直径 : radius</p>
-                        <input id="radius_bar" type="range" value="2.3" min="0.1" max="10" step="0.1" />
-                        <output id="radius_output">2.3</output>%
+                        <p>回転体の半径 : radius</p>
+                        <input id="radius_bar" type="range" min="0.1" max="10" step="0.1" v-model="settings.radius"  @change="onChange" />
+                        <output id="radius_output">{{settings.radius}}</output>%
+                    </div>
+                    <div class="holizon">
+                        <p>回転体の長さ : length</p>
+                        <input id="length_bar" type="range" min="0" max="100" step="1" v-model="settings.length" @change="onChange" />
+                        <output id="length_output">{{settings.length}}</output>%
                     </div>
                 </div>
                 <div class="row">
                     <div class="holizon">
                         <p>回転体の色1 : color1</p>
-                        <input id="color_1_bar" type="color" value="#ffffff" />
-                        <output id="color_1_output">#ffffff</output>
+                        <input id="color_1_bar" type="color" v-model="settings.color1" @change="onChange" />
+                        <output id="color_1_output">{{settings.color1}}</output>
                     </div>
                     <div class="holizon">
                         <p>回転体の色2 : color2</p>
-                        <input id="color_2_bar" type="color" value="#000000" />
-                        <output id="color_2_output">#000000</output>
+                        <input id="color_2_bar" type="color" v-model="settings.color2" @change="onChange" />
+                        <output id="color_2_output">{{settings.color2}}</output>
                     </div>
                     <div class="holizon">
                         <p>回転体の枠の色 : strokeColor</p>
-                        <input id="stroke_color" type="color" value="#000000" />
-                        <output id="stroke_color_output">#000000</output>
-                        <input id="has_stroke" type="checkbox" checked="checked" />
+                        <input id="stroke_color" type="color" v-model="settings.strokeColor" @change="onChange" />
+                        <output id="stroke_color_output">{{settings.strokeColor}}</output>
+                        <input id="has_stroke" type="checkbox" v-model="settings.hasStroke" @change="onChange" />
                         <label for="has_stroke">枠線を描画する : hasStroke(true / false)</label>
                     </div>
                 </div>
             </div>
-            <canvas id="canvas_loading"></canvas>
+            <canvas id="canvas_loading" :width="settings.canvasSize" :height="settings.canvasSize"></canvas>
+            <div class="row">
+                <div>このCanvasを出力するソース</div>
+                <textarea style="width:100%;height:300px">{{source}}</textarea>
+            </div>
         </div>
     </body>
 </html>

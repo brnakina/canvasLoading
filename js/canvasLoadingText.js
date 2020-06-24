@@ -3,12 +3,11 @@ canvasLoading.text = class Text {
 
     constructor(settings) {
         this.settings = settings;
-        this.r = settings.textColor.slice(1,3);
-        this.g = settings.textColor.slice(3,5);
-        this.b = settings.textColor.slice(5,7);
     }
 
-    draw() {
+    draw(settings) {
+    	this.settings = settings;
+    	this.setRGB();
         this.settings.ctx.font = [
             (this.settings.bold ? "bold" : ""),
             (this.settings.fontsize + "px"),
@@ -20,5 +19,11 @@ canvasLoading.text = class Text {
         this.settings.ctx.fillText(this.settings.text, this.settings.canvasSize / 2, this.settings.canvasSize / 2);
 
         return this;
+    }
+
+    setRGB(){
+        this.r = this.settings.textColor.slice(1,3);
+        this.g = this.settings.textColor.slice(3,5);
+        this.b = this.settings.textColor.slice(5,7);
     }
 }

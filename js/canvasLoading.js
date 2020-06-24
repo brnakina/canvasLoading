@@ -10,19 +10,20 @@ var canvasLoading = Object.assign(canvasLoading,
             circleNumber : 20,
             speed : 60,
             orbitRadiusRate : 80,
+            length : 0,
             radius : 3.5,
             color1 : "#ffffff",
             color2 : "#000000",
             hasStroke : true,
             strokeColor : "#000000",
             text : "Now Loading",
+            textColor : "#000000",
             fontsize : 20,
             bold : true,
-            textColor : "#000000"
         };
 
         const core = {
-            _init : (args) => {
+            _init(args){
 
                 Object.assign(settings, args);
 
@@ -41,7 +42,7 @@ var canvasLoading = Object.assign(canvasLoading,
                 }
             },
 
-            _newCanvas : () => {
+            _newCanvas(){
                 circles = [];
                 for(let i = 0; i < settings.circleNumber; i += 1){
                     circles.push(new canvasLoading.satellite(settings, i));
@@ -49,21 +50,33 @@ var canvasLoading = Object.assign(canvasLoading,
                 text = new canvasLoading.text(settings);
             },
 
-            _drive : () => {
+            _drive(){
                 setInterval(() => {
                     settings.ctx.clearRect(0, 0, settings.canvasSize, settings.canvasSize);
                     circles.forEach(circle => circle.move().draw());
-                    text.draw();
-                }, 16.66);
+                    text.draw(settings);
+                }, 1000 / 60);
+            },
+
+            _circles(){
+                return circles;
+            },
+
+            _open(){
+                console.log(circles);
+            },
+
+            _close(){
+
             }
         };
 
         return {
             init : core._init,
             newCanvas : core._newCanvas,
-            circles : circles,
-            open : () => {},
-            close : () => {}
+            open : core._open,
+            close : core._close,
+            getCircles : core._circles,
         };
     })()
 );
