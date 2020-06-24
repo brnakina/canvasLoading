@@ -4,7 +4,7 @@ canvasLoading.demo = (function(){
         _init : (settings) => {
 
           canvasLoading.vue = new Vue({
-            el : "#contents",
+            el : "#demo",
             data : {
               settings : settings
             },
