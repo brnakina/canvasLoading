@@ -26,7 +26,7 @@ canvasLoading.text = class Text {
         this.g = this.settings.textColor.slice(3,5);
         this.b = this.settings.textColor.slice(5,7);
     }
-}
+};
 canvasLoading.satellite = class Satellite {
 
     constructor(settings, i) {
@@ -164,12 +164,13 @@ canvasLoading.satellite = class Satellite {
 
         return this;
     }
-}
+};
 var canvasLoading = Object.assign(canvasLoading,
     (function(){
 
         let circles = [];
         let text = null;
+		let timer = null;
 
         let settings = {
             el : "canvas_loading",
@@ -218,11 +219,15 @@ var canvasLoading = Object.assign(canvasLoading,
             },
 
             _drive(){
-                setInterval(() => {
+                timer = setInterval(() => {
                     settings.ctx.clearRect(0, 0, settings.canvasSize, settings.canvasSize);
                     circles.forEach(circle => circle.move().draw());
                     text.draw(settings);
                 }, 1000 / 60);
+            },
+
+            _stop(){
+            	clearInterval(timer);
             },
 
             _circles(){
@@ -243,6 +248,7 @@ var canvasLoading = Object.assign(canvasLoading,
             newCanvas : core._newCanvas,
             open : core._open,
             close : core._close,
+			stop : core._stop,
             getCircles : core._circles,
         };
     })()
