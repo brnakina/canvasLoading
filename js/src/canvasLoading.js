@@ -211,10 +211,12 @@ var canvasLoading = Object.assign(canvasLoading,
             },
 
             _newCanvas(){
-                circles = [];
-                for(let i = 0; i < settings.circleNumber; i += 1){
-                    circles.push(new canvasLoading.satellite(settings, i));
-                }
+            	if(!circles.length || circles.length !== settings.circleNumber){
+	                circles = [];
+	                for(let i = 0; i < settings.circleNumber; i += 1){
+	                    circles.push(new canvasLoading.satellite(settings, i));
+	                }
+				}
                 text = new canvasLoading.text(settings);
             },
 
