@@ -1,0 +1,29 @@
+{
+  "name": "canvasloading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/canvasLoading.es.js",
+  "module": "dist/canvasLoading.es.js",
+  "scripts": {
+    "dev": "vite --mode demo",
+    "build:lib": "vite build",
+    "build:demo": "vite build --mode demo",
+    "build": "npm run build:lib && npm run build:demo",
+    "preview": "vite preview --mode demo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brnakina/canvasLoading.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/brnakina/canvasLoading/issues"
+  },
+  "homepage": "https://github.com/brnakina/canvasLoading#readme",
+  "devDependencies": {
+    "vite": "^8.0.8"
+  }
+}
